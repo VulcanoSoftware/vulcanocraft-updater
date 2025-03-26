@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulcanocraft Updater</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>VulcanoCraft Updater</h1>
+        <p class="subtitle">an online tool to upgrade or downgrade Minecraft datapacks and resource packs (texture packs).</p>
+        <div class="upload-section">
+            <div class="drop-area" id="dropArea">
+                <p>Drag your datapack(s) or resourcepack(s) here or</p>
+                <label for="fileInput" class="file-input-label">Choose file(s)</label>
+                <input type="file" id="fileInput" accept=".zip" multiple hidden>
+            </div>
+        </div>
+        
+        <div class="options-section" id="optionsSection" style="display: none;">
+            <h2>Update options</h2>
+            <div class="selected-files-container" id="selectedFilesContainer">
+                <h3>Selected files:</h3>
+                <ul id="selectedFilesList"></ul>
+            </div>
+            <div class="option-row pack-type-options">
+                <label>Pack type:</label>
+                <div class="radio-group">
+                    <input type="radio" id="resourcePack" name="packType" value="resourcePack" checked>
+                    <label for="resourcePack">Resource Pack</label>
+                    <input type="radio" id="dataPack" name="packType" value="dataPack">
+                    <label for="dataPack">Data Pack</label>
+                </div>
+            </div>
+            <div class="option-row" id="dataPack-version-row" style="display: none;">
+                <label for="minecraftVersion">Data Pack version:</label>
+                <select id="minecraftVersion">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="option-row" id="resourcePack-version-row">
+                <label for="resourcePackVersion">Resource Pack version:</label>
+                <select id="resourcePackVersion">
+                    <option value="">Loading...</option>
+                </select>
+            </div>
+            <div class="option-row">
+                <input type="checkbox" id="useCustomFormat">
+                <label for="useCustomFormat">Use custom pack format</label>
+                <div class="custom-format-input" id="customFormatInputContainer" style="display: none;">
+                    <input type="number" id="customFormatInput" min="1" max="1000" placeholder="Enter pack format">
+                </div>
+            </div>
+            <div class="option-row">
+                <input type="checkbox" id="clearDescription">
+                <label for="clearDescription">Clear description</label>
+            </div>
+            <button id="updateButton" class="primary-button">Update Packs</button>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <h2>Result</h2>
+            <div id="resultInfo"></div>
+            <div class="button-container">
+                <button id="downloadAllButton" class="primary-button" style="display: none;">Download All Packs</button>
+                <button id="downloadIndividualButton" class="secondary-button">Download Pack(s)</button>
+            </div>
+            <div id="individualDownloads" class="individual-downloads" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="wiki-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
